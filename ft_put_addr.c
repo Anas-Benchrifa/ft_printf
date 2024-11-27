@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put_addr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: aben-chr <aben-chr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:39:36 by mac               #+#    #+#             */
-/*   Updated: 2024/11/27 18:38:44 by mac              ###   ########.fr       */
+/*   Updated: 2024/11/27 22:23:29 by aben-chr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_put_addr_hex(unsigned long int nbr, char format, int *len)
+void	ft_put_addr_hex(unsigned long int nbr, char format, int *len)
 {
 	unsigned long int	b_16;
 	char				*base;

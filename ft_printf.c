@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: aben-chr <aben-chr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 00:35:31 by mac               #+#    #+#             */
-/*   Updated: 2024/11/27 18:57:52 by mac              ###   ########.fr       */
+/*   Updated: 2024/11/27 22:33:54 by aben-chr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,17 @@ static	void	conversion_characters(va_list arg_ptr, char format, int *len)
 		ft_put_nbr_base(va_arg(arg_ptr, int), format, len);
 	else if (format == 'X')
 		ft_put_nbr_base(va_arg(arg_ptr, int), format, len);
+	else
+		ft_putchar(format, len);
 }
 
-int	ft_printf(char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	_ptr_96;
 	int		lenght;
-	
+
+	if (write(1, 0, 0) == -1)
+		return (-1);
 	lenght = 0;
 	va_start(_ptr_96, format);
 	while (*format)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: aben-chr <aben-chr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 00:35:53 by mac               #+#    #+#             */
-/*   Updated: 2024/11/27 18:37:34 by mac              ###   ########.fr       */
+/*   Updated: 2024/11/27 22:34:33 by aben-chr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr(int nbr, int *len)
 {
-	unsigned int _nbr;
+	unsigned int	_nbr;
 
 	_nbr = nbr;
 	if (nbr < 0)
@@ -56,7 +56,7 @@ void	ft_put_u_nbr(unsigned int nbr, int *len)
 		ft_putchar(nbr + '0', len);
 	else
 	{
-		ft_put_u_nbr(nbr / 10, len);
-		ft_put_u_nbr(nbr % 10, len);
+		ft_putnbr(nbr / 10, len);
+		ft_putnbr(nbr % 10, len);
 	}
 }
