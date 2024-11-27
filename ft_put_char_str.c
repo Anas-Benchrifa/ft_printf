@@ -5,32 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 16:37:39 by mac               #+#    #+#             */
-/*   Updated: 2024/11/24 18:56:17 by mac              ###   ########.fr       */
+/*   Created: 2024/11/26 16:19:05 by mac               #+#    #+#             */
+/*   Updated: 2024/11/27 16:20:32 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+void	ft_putchar(char c, int *len)
 {
-	return (write(1, &c, 1));
+	write(1, &c, 1);
+	(*len)++;
 }
 
-int	ft_putstr(char *s)
+void	ft_putstr(char *s, int *len)
 {
-	int	lenght;
-
-	lenght = 0;
-	if (!s)
+	if (s == NULL)
+		ft_putstr("(null)", len);
+	while (*s)
 	{
-		lenght += ft_putstr("(null)");
-		return (lenght);
+		ft_putchar(*s, len);
+		s++;
 	}
-	while (s[lenght])
-	{
-		write(1, &s[lenght], 1);
-		lenght++;
-	}
-	return (lenght);
 }

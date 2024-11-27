@@ -5,58 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 19:04:27 by mac               #+#    #+#             */
-/*   Updated: 2024/11/24 22:12:57 by mac              ###   ########.fr       */
+/*   Created: 2024/11/27 00:35:31 by mac               #+#    #+#             */
+/*   Updated: 2024/11/27 16:31:40 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	test(va_list ptr, char c)
+static	void	conversion_characters(va_list arg_ptr, char format, int *len)
 {
-	int	lenght;
-
-	lenght = 0;
-	if (c == 'u')
-		lenght += ft_put_u_nbr(va_arg(ptr, unsigned int));
-	else if (c == 'p')
-	{
-		lenght += ft_putstr("0x");
-		lenght += ft_put_add(va_arg(ptr, unsigned long));
-	}
-	else if (c == 'x' || c == 'X')
-		lenght += ft_put_hex(va_arg(ptr, int), c);
-	else if (c == 's')
-		lenght += ft_putstr(va_arg(ptr, char *));
-	else if (c == 'd' || c == 'i')
-		lenght += ft_put_nbr(va_arg(ptr, int));
-	else if (c == 'c')
-		lenght = ft_putchar(va_arg(ptr, int));
-	else if (c == '%')
-		lenght += ft_putchar(c);
-	else
-		lenght += ft_putchar(c);
-	return (lenght);
+	if (format == 'd' || format == 'i')
+		ft_putnbr(va_arg(arg_ptr, int), len);
+	else if (format == 'c')
+		ft_putchar(va_arg(arg_ptr, int), len);
+	else if (format == '%')
+		ft_putchar(va_arg(arg_ptr, int), len);
+	else if (format == 's')
+		ft_putstr(va_arg(arg_ptr, char *), len);
+	else if (format == 'p')
+		ft_put_addr(va_arg(arg_ptr, void *), len);
+	else if (format == 'u')
+		ft_put_u_nbr(va_arg(arg_ptr, unsigned int), len);
+	else if (format == 'x')
+		ft_put_nbr_base(va_arg(arg_ptr, int), format, len);
+	else if (format == 'X')
+		ft_put_nbr_base(va_arg(arg_ptr, int), format, len);
 }
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(char *format, ...)
 {
+	va_list	_ptr_96;
 	int		lenght;
-	va_list	_format;
 
+	if (!format)
+		return (0);
 	lenght = 0;
-	va_start(_format, format);
+	va_start(_ptr_96, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			lenght += test(_format, *format);
+			conversion_characters(_ptr_96, *format, &lenght);
 		}
 		else
-			lenght += ft_putchar(*format);
+			ft_putchar(*format, &lenght);
 		format++;
 	}
-	va_end(_format);
 	return (lenght);
 }

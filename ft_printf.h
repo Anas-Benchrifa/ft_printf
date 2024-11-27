@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/24 16:38:04 by mac               #+#    #+#             */
-/*   Updated: 2024/11/24 22:20:12 by mac              ###   ########.fr       */
+/*   Created: 2024/11/26 22:57:45 by mac               #+#    #+#             */
+/*   Updated: 2024/11/27 16:31:56 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_printf(const char *format, ...);
-int	ft_put_add(unsigned long int nbr);
-int	ft_put_u_nbr(unsigned int nbr);
-int	ft_put_hex(int nbr, char x_X);
-int	ft_put_nbr(int nbr);
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
+void	ft_put_nbr_base(unsigned int nbr, char format, int *len);
+void	ft_put_u_nbr(unsigned int nbr, int *len);
+void	ft_put_addr(void *addr, int *len);
+void	ft_putnbr(int nbr, int *len);
+void	ft_putchar(char c, int *len);
+void	ft_putstr(char *s, int *len);
 
 #endif
