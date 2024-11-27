@@ -6,7 +6,7 @@
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 00:35:53 by mac               #+#    #+#             */
-/*   Updated: 2024/11/27 16:27:56 by mac              ###   ########.fr       */
+/*   Updated: 2024/11/27 18:37:34 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 void	ft_putnbr(int nbr, int *len)
 {
-	if (nbr == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return ;
-	}
+	unsigned int _nbr;
+
+	_nbr = nbr;
 	if (nbr < 0)
 	{
 		ft_putchar('-', len);
-		nbr *= -1;
+		_nbr *= -1;
 	}
-	if (nbr < 10)
-		ft_putchar(nbr + '0', len);
+	if (_nbr < 10)
+		ft_putchar(_nbr + '0', len);
 	else
 	{
-		ft_putnbr(nbr / 10, len);
-		ft_putnbr(nbr % 10, len);
+		ft_putnbr(_nbr / 10, len);
+		ft_putnbr(_nbr % 10, len);
 	}
 }
 

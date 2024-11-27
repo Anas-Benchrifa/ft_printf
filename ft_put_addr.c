@@ -6,13 +6,13 @@
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:39:36 by mac               #+#    #+#             */
-/*   Updated: 2024/11/27 16:24:14 by mac              ###   ########.fr       */
+/*   Updated: 2024/11/27 18:38:44 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_put_addr_hex(unsigned long int nbr, char format, int *len)
+static void	ft_put_addr_hex(unsigned long int nbr, char format, int *len)
 {
 	unsigned long int	b_16;
 	char				*base;

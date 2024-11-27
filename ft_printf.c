@@ -6,7 +6,7 @@
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 00:35:31 by mac               #+#    #+#             */
-/*   Updated: 2024/11/27 16:31:40 by mac              ###   ########.fr       */
+/*   Updated: 2024/11/27 18:57:52 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 static	void	conversion_characters(va_list arg_ptr, char format, int *len)
 {
-	if (format == 'd' || format == 'i')
+	if (format == '%')
+		ft_putchar(format, len);
+	else if (format == 'd' || format == 'i')
 		ft_putnbr(va_arg(arg_ptr, int), len);
-	else if (format == 'c')
-		ft_putchar(va_arg(arg_ptr, int), len);
-	else if (format == '%')
-		ft_putchar(va_arg(arg_ptr, int), len);
 	else if (format == 's')
 		ft_putstr(va_arg(arg_ptr, char *), len);
 	else if (format == 'p')
 		ft_put_addr(va_arg(arg_ptr, void *), len);
+	else if (format == 'c')
+		ft_putchar((char)va_arg(arg_ptr, int), len);
 	else if (format == 'u')
 		ft_put_u_nbr(va_arg(arg_ptr, unsigned int), len);
 	else if (format == 'x')
@@ -36,9 +36,7 @@ int	ft_printf(char *format, ...)
 {
 	va_list	_ptr_96;
 	int		lenght;
-
-	if (!format)
-		return (0);
+	
 	lenght = 0;
 	va_start(_ptr_96, format);
 	while (*format)
@@ -52,5 +50,6 @@ int	ft_printf(char *format, ...)
 			ft_putchar(*format, &lenght);
 		format++;
 	}
+	va_end(_ptr_96);
 	return (lenght);
 }

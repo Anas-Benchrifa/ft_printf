@@ -6,7 +6,7 @@
 /*   By: mac <mac@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:19:05 by mac               #+#    #+#             */
-/*   Updated: 2024/11/27 16:20:32 by mac              ###   ########.fr       */
+/*   Updated: 2024/11/27 18:53:55 by mac              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_putstr(char *s, int *len)
 {
 	if (s == NULL)
 		ft_putstr("(null)", len);
-	while (*s)
+	while (s && *s)
 	{
 		ft_putchar(*s, len);
 		s++;
